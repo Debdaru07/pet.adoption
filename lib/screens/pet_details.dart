@@ -2,6 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import '../models/pet_model.dart';
+import 'package:confetti/confetti.dart';
+
 
 class PetDetailPage extends StatefulWidget {
   final PetModel pet;
@@ -13,272 +15,300 @@ class PetDetailPage extends StatefulWidget {
 }
 
 class _PetDetailPageState extends State<PetDetailPage> {
+  late ConfettiController _confettiController;
+
+  @override
+  void initState() {
+    super.initState();
+    _confettiController = ConfettiController(duration: Duration(seconds: 3));
+  }
+
+  @override
+  void dispose() {
+    _confettiController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey[200],
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Stack(
+    return Stack(
+      children: [
+        Scaffold(
+          backgroundColor: Colors.grey[200],
+          body: SafeArea(
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  GestureDetector(
-                    onTap: () {
-                      showDialog(
-                        context: context,
-                        barrierDismissible: true,
-                        builder: (context) {
-                          return Stack(
-                            children: [
-                              BackdropFilter(
-                                filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
-                                child: Container(
-                                  color: Colors.black.withOpacity(0.2),
-                                ),
-                              ),
-                              Center(
-                                child: Dialog(
-                                  backgroundColor: Colors.transparent,
-                                  insetPadding: EdgeInsets.all(10),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(16),
-                                    child: InteractiveViewer(
-                                      minScale: 0.6,
-                                      maxScale: 4.0,
-                                      child: Image.network(
-                                        widget.pet.imageUrl,
-                                        fit: BoxFit.contain,
+                  Stack(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          showDialog(
+                            context: context,
+                            barrierDismissible: true,
+                            builder: (context) {
+                              return Stack(
+                                children: [
+                                  BackdropFilter(
+                                    filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
+                                    child: Container(
+                                      color: Colors.black.withOpacity(0.2),
+                                    ),
+                                  ),
+                                  Center(
+                                    child: Dialog(
+                                      backgroundColor: Colors.transparent,
+                                      insetPadding: EdgeInsets.all(10),
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(16),
+                                        child: InteractiveViewer(
+                                          minScale: 0.6,
+                                          maxScale: 4.0,
+                                          child: Image.network(
+                                            widget.pet.imageUrl,
+                                            fit: BoxFit.contain,
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-                              ),
-                            ],
+                                ],
+                              );
+                            },
                           );
                         },
-                      );
-                    },
-                    child: Stack(
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(16),
-                          child: Image.network(
-                            widget.pet.imageUrl,
-                            height: 325,
-                            width: double.infinity,
-                            fit: BoxFit.cover,
+                        child: Stack(
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(16),
+                              child: Image.network(
+                                widget.pet.imageUrl,
+                                height: 325,
+                                width: double.infinity,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            Positioned(
+                              bottom: 30,
+                              right: 8,
+                              child: (widget.pet.adoptedDate ?? '').trim().isNotEmpty
+                                  ? Container(
+                                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                                      decoration: BoxDecoration(
+                                        color: Colors.green, // Adopted label color
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          const Icon(Icons.check_circle, color: Colors.white, size: 20), // Check icon
+                                          const SizedBox(width: 4),
+                                          const Text(
+                                            "Adopted",
+                                            style: TextStyle(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  : const SizedBox(), 
+                            )
+                          ],
+                        ),
+                      ),
+                      Positioned(
+                        top: 40,
+                        left: 16,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white.withOpacity(0.6),
+                            shape: BoxShape.circle,
+                          ),
+                          child: IconButton(
+                            icon: const Icon(Icons.arrow_back, color: Colors.black),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
                           ),
                         ),
-                        Positioned(
-                          bottom: 30,
-                          right: 8,
-                          child: (widget.pet.adoptedDate ?? '').trim().isNotEmpty
-                              ? Container(
-                                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                                  decoration: BoxDecoration(
-                                    color: Colors.green, // Adopted label color
-                                    borderRadius: BorderRadius.circular(8),
+                      ),
+                    ],
+                  ),
+                  
+        
+                  // Pet Details Card
+                  Transform.translate(
+                    offset: const Offset(0, -20),
+                    child: Container(
+                      padding: const EdgeInsets.only(top: 24, bottom: 16),
+                      decoration: BoxDecoration(
+                        color: Colors.grey[200],
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(20),
+                          topRight: Radius.circular(20),
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12.withOpacity(0.1),
+                            blurRadius: 8,
+                            spreadRadius: 2,
+                          ),
+                        ],
+                      ),
+                    
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
+                            child: Container(
+                              padding: const EdgeInsets.all(16),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(16),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black12,
+                                    blurRadius: 6,
+                                    spreadRadius: 2,
                                   ),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
+                                ],
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
-                                      const Icon(Icons.check_circle, color: Colors.white, size: 20), // Check icon
-                                      const SizedBox(width: 4),
-                                      const Text(
-                                        "Adopted",
-                                        style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white,
+                                      Row(
+                                        children: [
+                                          Text(
+                                            widget.pet.name,
+                                            style: const TextStyle(
+                                                fontSize: 22, fontWeight: FontWeight.bold),
+                                          ),
+                                          Text(' (${widget.pet.breed})',style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: Colors.grey[500])),
+                                        ],
+                                      ),
+                                      
+                                      ClipRRect(
+                                        borderRadius: BorderRadius.circular(8),
+                                        child: Image.network(
+                                          widget.pet.imageUrl,
+                                          height: 40,
+                                          width: 40,
+                                          fit: BoxFit.cover,
                                         ),
+                                      )
+                                    ],
+                                  ),
+                                  const SizedBox(height: 8),
+                                  Row(
+                                    children: [
+                                      _buildDetailChip("Female", Colors.green),
+                                      _buildDetailChip("${widget.pet.age} yrs.", Colors.blue),
+                                      _buildDetailChip("${widget.pet.age * 3} kg", Colors.purple),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 8),
+                                  Row(
+                                    children: [
+                                      const Icon(Icons.location_on, color: Colors.red),
+                                      Text(widget.pet.collectPetFrom),
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 20),
+                          // Owner Details
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
+                            child: Container(
+                              padding: const EdgeInsets.all(16),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      CircleAvatar(
+                                        backgroundImage: NetworkImage(widget.pet.imageUrl),
+                                        radius: 20,
+                                      ),
+                                      const SizedBox(width: 10),
+                                      Text(
+                                        widget.pet.name,
+                                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                                      ),
+                                      const Spacer(),
+                                      IconButton(
+                                        icon: const Icon(Icons.phone, color: Colors.green),
+                                        onPressed: () {},
+                                      ),
+                                      IconButton(
+                                        icon: const Icon(Icons.chat, color: Colors.blue),
+                                        onPressed: () {},
                                       ),
                                     ],
                                   ),
-                                )
-                              : const SizedBox(), 
-                        )
-                      ],
+                                  const SizedBox(height: 8),
+                                  Text(
+                                    "I am ${widget.pet.name}, Jenny's momma. I am relocating and don’t have enough space to keep ${widget.pet.name} with me. Your life will be joyful once you take ${widget.pet.name} into it.",
+                                    style: const TextStyle(fontSize: 14, color: Colors.grey),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                  Positioned(
-                    top: 40,
-                    left: 16,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.6),
-                        shape: BoxShape.circle,
-                      ),
-                      child: IconButton(
-                        icon: const Icon(Icons.arrow_back, color: Colors.black),
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
+                  const SizedBox(height: 16),
+                  // Adopt Button
+                  Visibility(
+                    visible: (widget.pet.adoptedDate ?? '').trim().isEmpty,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: SizedBox(
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          onPressed: () => _showAdoptionConfirmationDialog(context),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.purple,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                            padding: const EdgeInsets.symmetric(vertical: 16),
+                          ),
+                          child: Text(
+                            "Adopt ${widget.pet.name}",
+                            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
+                          ),
+                        ),
                       ),
                     ),
                   ),
                 ],
               ),
-              
-
-              // Pet Details Card
-              Transform.translate(
-                offset: const Offset(0, -20),
-                child: Container(
-                  padding: const EdgeInsets.only(top: 24, bottom: 16),
-                  decoration: BoxDecoration(
-                    color: Colors.grey[200],
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      topRight: Radius.circular(20),
-                    ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black12.withOpacity(0.1),
-                        blurRadius: 8,
-                        spreadRadius: 2,
-                      ),
-                    ],
-                  ),
-                
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
-                        child: Container(
-                          padding: const EdgeInsets.all(16),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(16),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black12,
-                                blurRadius: 6,
-                                spreadRadius: 2,
-                              ),
-                            ],
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Row(
-                                    children: [
-                                      Text(
-                                        widget.pet.name,
-                                        style: const TextStyle(
-                                            fontSize: 22, fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(' (${widget.pet.breed})',style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: Colors.grey[500])),
-                                    ],
-                                  ),
-                                  
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.circular(8),
-                                    child: Image.network(
-                                      widget.pet.imageUrl,
-                                      height: 40,
-                                      width: 40,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  )
-                                ],
-                              ),
-                              const SizedBox(height: 8),
-                              Row(
-                                children: [
-                                  _buildDetailChip("Female", Colors.green),
-                                  _buildDetailChip("${widget.pet.age} yrs.", Colors.blue),
-                                  _buildDetailChip("${widget.pet.age * 3} kg", Colors.purple),
-                                ],
-                              ),
-                              const SizedBox(height: 8),
-                              Row(
-                                children: [
-                                  const Icon(Icons.location_on, color: Colors.red),
-                                  Text(widget.pet.collectPetFrom),
-                                ],
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 20),
-                      // Owner Details
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
-                        child: Container(
-                          padding: const EdgeInsets.all(16),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                children: [
-                                  CircleAvatar(
-                                    backgroundImage: NetworkImage(widget.pet.imageUrl),
-                                    radius: 20,
-                                  ),
-                                  const SizedBox(width: 10),
-                                  Text(
-                                    widget.pet.name,
-                                    style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                                  ),
-                                  const Spacer(),
-                                  IconButton(
-                                    icon: const Icon(Icons.phone, color: Colors.green),
-                                    onPressed: () {},
-                                  ),
-                                  IconButton(
-                                    icon: const Icon(Icons.chat, color: Colors.blue),
-                                    onPressed: () {},
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(height: 8),
-                              Text(
-                                "I am ${widget.pet.name}, Jenny's momma. I am relocating and don’t have enough space to keep ${widget.pet.name} with me. Your life will be joyful once you take ${widget.pet.name} into it.",
-                                style: const TextStyle(fontSize: 14, color: Colors.grey),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              const SizedBox(height: 16),
-              // Adopt Button
-              Visibility(
-                visible: (widget.pet.adoptedDate ?? '').trim().isEmpty,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      onPressed: () => _showAdoptionConfirmationDialog(context),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.purple,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        padding: const EdgeInsets.symmetric(vertical: 16),
-                      ),
-                      child: Text(
-                        "Adopt ${widget.pet.name}",
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
+            ),
           ),
         ),
-      ),
+        Align(
+          alignment: Alignment.topCenter,
+          child: ConfettiWidget(
+            confettiController: _confettiController,
+            blastDirectionality: BlastDirectionality.explosive,
+            shouldLoop: false,
+            colors: [Colors.purple, Colors.yellow, Colors.blue],
+            gravity: 0.5,
+          ),
+        ),
+      ],
     );
   }
 
@@ -339,6 +369,7 @@ class _PetDetailPageState extends State<PetDetailPage> {
             ElevatedButton(
               onPressed: () {
                 Navigator.pop(context);
+                _confettiController.play(); 
                 showAdoptionToast(context, widget.pet.name);
               },
               style: ElevatedButton.styleFrom(
