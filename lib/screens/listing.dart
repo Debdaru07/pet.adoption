@@ -30,7 +30,7 @@ class _PetListScreenState extends State<PetListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Pets List')),
+      appBar: AppBar(title: Text('Petadopt')),
       body: pets.isEmpty
           ? Center(child: CircularProgressIndicator())
           : GridView.builder(
@@ -75,7 +75,7 @@ class _PetListScreenState extends State<PetListScreen> {
                           const BorderRadius.vertical(top: Radius.circular(16)),
                       child: Image.network(
                         pet.imageUrl,
-                        height: 120,
+                        height: 177.5,
                         width: double.infinity,
                         fit: BoxFit.cover,
                         errorBuilder: (context, error, stackTrace) =>
@@ -83,50 +83,45 @@ class _PetListScreenState extends State<PetListScreen> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(8),
+                      padding: const EdgeInsets.only(left: 8, right: 8, top: 6),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             pet.name,
                             style: const TextStyle(
-                              fontSize: 16,
+                              fontSize: 15,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          Text(
-                            "(${pet.breed})",
-                            style: const TextStyle(
-                              fontSize: 14,
-                              color: Colors.grey,
-                            ),
-                          ),
-                          const SizedBox(height: 4),
-                          Text(
-                            pet.category,
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500,
-                              color: pet.category == "Male"
-                                  ? Colors.blue
-                                  : Colors.purple,
-                            ),
+                          Row(
+                            children: [
+                              _getCategoryIcon(pet.category),
+                              const SizedBox(width: 6),
+                              Text(
+                                pet.breed,
+                                style: const TextStyle(
+                                  fontSize: 12,
+                                  color: Colors.grey,
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
                     ),
                   ],
                 ),
-                Positioned(
-                  top: 8,
-                  right: 8,
-                  child: IconButton(
-                    icon: const Icon(Icons.favorite_border, color: Colors.white),
-                    onPressed: () {
-                      // Add favorite functionality
-                    },
-                  ),
-                ),
+                // Positioned(
+                //   top: 8,
+                //   right: 8,
+                //   child: IconButton(
+                //     icon: const Icon(Icons.favorite_border, color: Colors.white),
+                //     onPressed: () {
+                //       // Add favorite functionality
+                //     },
+                //   ),
+                // ),
               ],
             ),
           ),
@@ -134,4 +129,23 @@ class _PetListScreenState extends State<PetListScreen> {
       })
     );
   }
+
+  Widget _getCategoryIcon(String category) {
+    switch (category.toLowerCase()) {
+      case "dog":
+        return const Text("🐶", style: TextStyle(fontSize: 20));
+      case "cat":
+        return const Text("🐱", style: TextStyle(fontSize: 20));
+      case "bird":
+        return const Text("🐦", style: TextStyle(fontSize: 20));
+      case "rabbit":
+        return const Text("🐰", style: TextStyle(fontSize: 20));
+      case "fish":
+        return const Text("🐠", style: TextStyle(fontSize: 20));
+      default:
+        return const Text("🔹", style: TextStyle(fontSize: 20)); // Fallback emoji
+    }
+  }
+
+
 }
