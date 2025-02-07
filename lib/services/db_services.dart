@@ -91,4 +91,18 @@ class DatabaseHelper {
     });
   }
 
+  Future<List<PetModel>> getAdoptedPetsChronologically() async {
+    final db = await database;
+    final List<Map<String, dynamic>> maps = await db.query(
+      tableName,
+      where: "adopted_date IS NOT NULL AND adopted_date != ''",
+      orderBy: "adopted_date ASC", // Sorting in chronological order
+    );
+    
+    return List.generate(maps.length, (i) {
+      return PetModel.fromJson(maps[i]);
+    });
+  }
+
+
 }

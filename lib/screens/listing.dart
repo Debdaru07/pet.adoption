@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../models/pet_model.dart';
-import '../services/db_services.dart';
 import '../view_model/pet_list_view_model.dart';
 import 'pet_details.dart';
 
@@ -14,37 +13,23 @@ class PetListScreen extends StatefulWidget {
 }
 
 class _PetListScreenState extends State<PetListScreen> {
-  // List<PetModel> pets = [];
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   _fetchPets();
-  // }
-
-  // Future<void> _fetchPets() async {
-  //   final data = await DatabaseHelper.instance.getPetsAsListOfPetModel();
-  //   setState(() {
-  //     pets = data;
-  //   });
-  // }
 
   late ScrollController _scrollController;
 
   @override
   void initState() {
     super.initState();
-    _scrollController = ScrollController();
-    _scrollController.addListener(_onScroll);
+    // _scrollController = ScrollController();
+    // _scrollController.addListener(_onScroll);
     final petsVM = Provider.of<PetsViewModel>(context, listen: false);
     Future.delayed(Duration.zero, () async {
       await petsVM.getPetsAsListOfPetModel();
       await petsVM.setAllPetsValue(petsVM.allPets);
     });
     // _fetchPets();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      Provider.of<PetsViewModel>(context, listen: false).setPets(petsVM.allPets);
-    });
+    // WidgetsBinding.instance.addPostFrameCallback((_) {
+    //   Provider.of<PetsViewModel>(context, listen: false).setPets(petsVM.allPets);
+    // });
   }
 
   void _onScroll() {
@@ -94,11 +79,12 @@ class _PetListScreenState extends State<PetListScreen> {
                   mainAxisSpacing: 12,
                   childAspectRatio: 0.75,
                 ),
-                itemCount: petViewModel.visiblePets.length + 1 , //allPets.length,
+                itemCount: petViewModel.allPets.length, //visiblePets.length + 1 , //allPets.length,
                 itemBuilder: (context, index) {
                   // return petCardIndividual(pet);
-                  if (index < petViewModel.visiblePets.length) {
-                    final pet = petViewModel.visiblePets[index];
+                  // if (index < petViewModel.visiblePets.length) {
+                  if (index < petViewModel.allPets.length) {
+                    final pet = petViewModel.allPets[index];
                     return GestureDetector(
                       onTap: () {
                         Navigator.push(
