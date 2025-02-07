@@ -299,25 +299,123 @@ class _PetDetailPageState extends State<PetDetailPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text("Confirm Adoption"),
-          content: Text("Are you sure you want to adopt ${widget.pet.name}?"),
-          actions: <Widget>[
+          backgroundColor: Colors.grey.shade200, // Light grey background
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20), // Rounded corners
+          ),
+          title: Row(
+            children: [
+              Icon(Icons.pets, color: Colors.purple.shade700), // Pet icon
+              const SizedBox(width: 8),
+              Text(
+                "Confirm Adoption",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                  color: Colors.purple.shade700, // Purple theme color
+                ),
+              ),
+            ],
+          ),
+          content: Text(
+            "Are you sure you want to adopt ${widget.pet.name} ?",
+            style: TextStyle(fontSize: 16, color: Colors.black87),
+          ),
+          actions: [
             TextButton(
-              child: const Text("Cancel"),
-              onPressed: () => Navigator.of(context).pop(),
+              onPressed: () => Navigator.pop(context),
+              child: const Text(
+                "Cancel",
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.purple,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
-            TextButton(
-              child: const Text("Adopt"),
+            ElevatedButton(
               onPressed: () {
-                Navigator.of(context).pop();
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('${widget.pet.name} adopted!')),
-                );
+                Navigator.pop(context);
+                showAdoptionToast(context, widget.pet.name);
               },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.purple.shade700,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(Icons.check_circle, color: Colors.white),
+                  const SizedBox(width: 6),
+                  const Text(
+                    "Adopt",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         );
       },
     );
   }
+
+  void showAdoptionToast(BuildContext context, String petName) {
+    final overlay = Overlay.of(context);
+    final overlayEntry = OverlayEntry(
+      builder: (context) => Positioned(
+        top: MediaQuery.of(context).viewInsets.top + 70, // Position from top
+        left: 20,
+        right: 20,
+        child: Material(
+          color: Colors.transparent,
+          child: Container(
+            padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+            decoration: BoxDecoration(
+              color: Colors.green,
+              borderRadius: BorderRadius.circular(12),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black26,
+                  blurRadius: 6,
+                  offset: Offset(0, 3),
+                ),
+              ],
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(Icons.pets, color: Colors.white),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    "$petName has been adopted ! 🎉",
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+
+    overlay.insert(overlayEntry);
+
+    // Auto remove after 1.5 seconds
+    Future.delayed(const Duration(milliseconds: 1500), () {
+      overlayEntry.remove();
+    });
+  }
+
 }
