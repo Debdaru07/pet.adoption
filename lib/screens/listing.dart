@@ -65,10 +65,10 @@ class _PetListScreenState extends State<PetListScreen> {
                 ),
               ],
             ),
-            child: Stack(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                Stack(
                   children: [
                     ClipRRect(
                       borderRadius:
@@ -82,46 +82,64 @@ class _PetListScreenState extends State<PetListScreen> {
                             const Icon(Icons.pets, size: 50, color: Colors.grey),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 8, right: 8, top: 6),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            pet.name,
-                            style: const TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Row(
-                            children: [
-                              _getCategoryIcon(pet.category),
-                              const SizedBox(width: 6),
-                              Text(
-                                pet.breed,
-                                style: const TextStyle(
-                                  fontSize: 12,
-                                  color: Colors.grey,
-                                ),
+                    Positioned(
+                      bottom: 8,
+                      right: 8,
+                      child: (pet.adoptedDate ?? '').trim().isNotEmpty
+                          ? Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                              decoration: BoxDecoration(
+                                color: Colors.green, // Adopted label color
+                                borderRadius: BorderRadius.circular(8),
                               ),
-                            ],
-                          ),
-                        ],
-                      ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  const Icon(Icons.check_circle, color: Colors.white, size: 14), // Check icon
+                                  const SizedBox(width: 4),
+                                  const Text(
+                                    "Adopted",
+                                    style: TextStyle(
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )
+                          : const SizedBox(), // If not adopted, show nothing
                     ),
                   ],
                 ),
-                // Positioned(
-                //   top: 8,
-                //   right: 8,
-                //   child: IconButton(
-                //     icon: const Icon(Icons.favorite_border, color: Colors.white),
-                //     onPressed: () {
-                //       // Add favorite functionality
-                //     },
-                //   ),
-                // ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8, right: 8, top: 6),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        pet.name,
+                        style: const TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          _getCategoryIcon(pet.category),
+                          const SizedBox(width: 6),
+                          Text(
+                            pet.breed,
+                            style: const TextStyle(
+                              fontSize: 12,
+                              color: Colors.grey,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
