@@ -1,11 +1,18 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import '../models/pet_model.dart';
 
-class PetDetailPage extends StatelessWidget {
+class PetDetailPage extends StatefulWidget {
   final PetModel pet;
 
   const PetDetailPage({super.key, required this.pet});
 
+  @override
+  State<PetDetailPage> createState() => _PetDetailPageState();
+}
+
+class _PetDetailPageState extends State<PetDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,13 +24,50 @@ class PetDetailPage extends StatelessWidget {
             children: [
               Stack(
                 children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(16),
-                    child: Image.network(
-                      pet.imageUrl,
-                      height: 325,
-                      width: double.infinity,
-                      fit: BoxFit.cover,
+                  GestureDetector(
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        barrierDismissible: true,
+                        builder: (context) {
+                          return Stack(
+                            children: [
+                              BackdropFilter(
+                                filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
+                                child: Container(
+                                  color: Colors.black.withOpacity(0.2),
+                                ),
+                              ),
+                              Center(
+                                child: Dialog(
+                                  backgroundColor: Colors.transparent,
+                                  insetPadding: EdgeInsets.all(10),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(16),
+                                    child: InteractiveViewer(
+                                      minScale: 0.6,
+                                      maxScale: 4.0,
+                                      child: Image.network(
+                                        widget.pet.imageUrl,
+                                        fit: BoxFit.contain,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    },
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(16),
+                      child: Image.network(
+                        widget.pet.imageUrl,
+                        height: 325,
+                        width: double.infinity,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                   Positioned(
@@ -92,18 +136,18 @@ class PetDetailPage extends StatelessWidget {
                                   Row(
                                     children: [
                                       Text(
-                                        pet.name,
+                                        widget.pet.name,
                                         style: const TextStyle(
                                             fontSize: 22, fontWeight: FontWeight.bold),
                                       ),
-                                      Text(' (${pet.breed})',style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: Colors.grey[500])),
+                                      Text(' (${widget.pet.breed})',style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: Colors.grey[500])),
                                     ],
                                   ),
                                   
                                   ClipRRect(
                                     borderRadius: BorderRadius.circular(8),
                                     child: Image.network(
-                                      pet.imageUrl,
+                                      widget.pet.imageUrl,
                                       height: 40,
                                       width: 40,
                                       fit: BoxFit.cover,
@@ -115,15 +159,15 @@ class PetDetailPage extends StatelessWidget {
                               Row(
                                 children: [
                                   _buildDetailChip("Female", Colors.green),
-                                  _buildDetailChip("${pet.age} yrs.", Colors.blue),
-                                  _buildDetailChip("${pet.age * 3} kg", Colors.purple),
+                                  _buildDetailChip("${widget.pet.age} yrs.", Colors.blue),
+                                  _buildDetailChip("${widget.pet.age * 3} kg", Colors.purple),
                                 ],
                               ),
                               const SizedBox(height: 8),
                               Row(
                                 children: [
                                   const Icon(Icons.location_on, color: Colors.red),
-                                  Text(pet.collectPetFrom),
+                                  Text(widget.pet.collectPetFrom),
                                 ],
                               )
                             ],
@@ -142,12 +186,12 @@ class PetDetailPage extends StatelessWidget {
                               Row(
                                 children: [
                                   CircleAvatar(
-                                    backgroundImage: NetworkImage(pet.imageUrl),
+                                    backgroundImage: NetworkImage(widget.pet.imageUrl),
                                     radius: 20,
                                   ),
                                   const SizedBox(width: 10),
                                   Text(
-                                    pet.name,
+                                    widget.pet.name,
                                     style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                                   ),
                                   const Spacer(),
@@ -163,7 +207,7 @@ class PetDetailPage extends StatelessWidget {
                               ),
                               const SizedBox(height: 8),
                               Text(
-                                "I am ${pet.name}, Jenny's momma. I am relocating and don’t have enough space to keep ${pet.name} with me. Your life will be joyful once you take ${pet.name} into it.",
+                                "I am ${widget.pet.name}, Jenny's momma. I am relocating and don’t have enough space to keep ${widget.pet.name} with me. Your life will be joyful once you take ${widget.pet.name} into it.",
                                 style: const TextStyle(fontSize: 14, color: Colors.grey),
                               )
                             ],
@@ -224,7 +268,7 @@ class PetDetailPage extends StatelessWidget {
       builder: (BuildContext context) {
         return AlertDialog(
           title: const Text("Confirm Adoption"),
-          content: Text("Are you sure you want to adopt ${pet.name}?"),
+          content: Text("Are you sure you want to adopt ${widget.pet.name}?"),
           actions: <Widget>[
             TextButton(
               child: const Text("Cancel"),
@@ -235,7 +279,7 @@ class PetDetailPage extends StatelessWidget {
               onPressed: () {
                 Navigator.of(context).pop();
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('${pet.name} adopted!')),
+                  SnackBar(content: Text('${widget.pet.name} adopted!')),
                 );
               },
             ),
