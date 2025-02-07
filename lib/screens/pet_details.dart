@@ -15,11 +15,11 @@ class PetDetailPage extends StatelessWidget {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.pop(context); // Go back to the previous screen
+            Navigator.pop(context);
           },
         ),
       ),
-      body: SingleChildScrollView( // For scrollable content if it's too long
+      body: SingleChildScrollView( 
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -35,22 +35,20 @@ class PetDetailPage extends StatelessWidget {
             Text('Breed: ${pet.breed}'),
             Text('Category: ${pet.category}'),
             Text('Age: ${pet.age} years'),
-            Text('Price: \$${pet.price.toStringAsFixed(2)}'), // Format price
-            if (pet.adoptedDate!= null) // Conditionally show adopted date
+            Text('Price: \$${pet.price.toStringAsFixed(2)}'), 
+            if (pet.adoptedDate!= null)
               Text('Adopted Date: ${pet.adoptedDate}'),
             Text('Identifier: ${pet.identifier}'),
             Text('Contact At: ${pet.contactAt}'),
             Text('Collect Pet From: ${pet.collectPetFrom}'),
-             // Add more details as needed
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Implement adoption logic here (e.g., update database, show confirmation dialog)
           _showAdoptionConfirmationDialog(context);
         },
-        child: const Text("Adopt Me"), // Or an Icon: Icon(Icons.pets)
+        child: const Text("Adopt Me"), 
       ),
     );
   }
