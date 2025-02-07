@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'screens/listing.dart';
 import 'services/db_services.dart';
+import 'package:provider/provider.dart';
+
+import 'view_model/pet_list_view_model.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,7 +22,11 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: PetListScreen(),
+      home: MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (context) => PetsViewModel()),
+        ],
+        child: PetListScreen()),
     );
   }
 }
