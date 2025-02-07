@@ -4,6 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
+import '../models/pet_model.dart';
+
 class DatabaseHelper {
   static final DatabaseHelper instance = DatabaseHelper._init();
   static Database? _database;
@@ -81,4 +83,12 @@ class DatabaseHelper {
     final db = await database;
     return await db.query(tableName);
   }
+  Future<List<PetModel>> getPetsAsListOfPetModel() async { 
+    final db = await database;
+    final List<Map<String, dynamic>> maps = await db.query(tableName);
+    return List.generate(maps.length, (i) {
+      return PetModel.fromJson(maps[i]);
+    });
+  }
+
 }

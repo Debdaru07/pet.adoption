@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../models/pet_model.dart';
 import '../services/db_services.dart';
 
 class PetListScreen extends StatefulWidget {
@@ -10,7 +11,7 @@ class PetListScreen extends StatefulWidget {
 }
 
 class _PetListScreenState extends State<PetListScreen> {
-  List<Map<String, dynamic>> pets = [];
+  List<PetModel> pets = [];
 
   @override
   void initState() {
@@ -19,7 +20,7 @@ class _PetListScreenState extends State<PetListScreen> {
   }
 
   Future<void> _fetchPets() async {
-    final data = await DatabaseHelper.instance.getPets();
+    final data = await DatabaseHelper.instance.getPetsAsListOfPetModel();
     setState(() {
       pets = data;
     });
@@ -36,7 +37,7 @@ class _PetListScreenState extends State<PetListScreen> {
               itemBuilder: (context, index) {
                 return ListTile(
                   leading: Image.network(
-                    pets[index]['image_url'], 
+                    pets[index].imageUrl, // ['image_url'], 
                     width: 50, 
                     height: 50,
                     fit: BoxFit.cover,
@@ -44,9 +45,9 @@ class _PetListScreenState extends State<PetListScreen> {
                       return Icon(Icons.pets, size: 50, color: Colors.grey);
                     },
                   ),
-                  title: Text(pets[index]['name']),
-                  subtitle: Text("${pets[index]['breed']} - ${pets[index]['category']}"),
-                  trailing: Text("\$${pets[index]['price']}"),
+                  title: Text(pets[index].name), //['name']),
+                  subtitle: Text("${pets[index].breed} - ${pets[index].category}"),
+                  trailing: Text("\$${pets[index].price}"),
                 );
               },
             ),
