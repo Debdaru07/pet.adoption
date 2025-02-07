@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'package:flutter/services.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
@@ -17,14 +18,22 @@ class DatabaseHelper {
   }
 
   Future<Database> _initDB(String fileName) async {
-    final dbPath = await getDatabasesPath();
-    final path = join(dbPath, fileName);
-
-    return await openDatabase(
-      path,
-      version: 1,
-      onCreate: _createDB,
-    );
+    try {
+      final dbPath = await getDatabasesPath();
+      final path = join(dbPath, fileName);
+      return await openDatabase(
+        path,
+        version: 1,
+        onCreate: _createDB,
+      );
+    } catch(obj) {
+      log('exception :- $obj');
+      return await openDatabase(
+        '',
+        version: 1,
+        onCreate: _createDB,
+      );
+    }
   }
 
   Future<void> _createDB(Database db, int version) async {
@@ -38,8 +47,11 @@ class DatabaseHelper {
         breed TEXT NOT NULL,
         category TEXT NOT NULL,
         adopted_date TEXT,
-        identifier TEXT NOT NULL
+        identifier TEXT NOT NULL,
+        contact_at TEXT NOT NULL DEFAULT 'Not Provided',
+        collect_pet_from TEXT NOT NULL
       )
+
     ''');
 
     await _populateDatabase(db);
@@ -59,6 +71,8 @@ class DatabaseHelper {
         "category": pet["category"],
         "adopted_date": pet["adopted_date"],
         "identifier": pet["identifier"],
+        "contact_at": pet["contact_at"],
+        "collect_pet_from": pet["collect_pet_from"],
       });
     }
   }
