@@ -1,0 +1,164 @@
+[
+    {
+      "name": "Buddy",
+      "age": 2,
+      "price": 150,
+      "image_url": "https://www.publicdomainpictures.net/pictures/30000/nahled/golden-retriever-dog.jpg",
+      "breed": "Golden Retriever",
+      "category": "Dog",
+      "adopted_date": "",
+      "identifier": "Golden fur with a white patch on chest"
+    },
+    {
+      "name": "Whiskers",
+      "age": 1,
+      "price": 80,
+      "image_url": "https://www.publicdomainpictures.net/pictures/40000/nahled/siamese-cat.jpg",
+      "breed": "Siamese",
+      "category": "Cat",
+      "adopted_date": "",
+      "identifier": "Blue eyes with a kinked tail"
+    },
+    {
+      "name": "Fluffy",
+      "age": 3,
+      "price": 60,
+      "image_url": "https://www.publicdomainpictures.net/pictures/50000/nahled/persian-cat.jpg",
+      "breed": "Persian",
+      "category": "Cat",
+      "adopted_date": "",
+      "identifier": "White fur with green eyes"
+    },
+    {
+      "name": "Max",
+      "age": 4,
+      "price": 200,
+      "image_url": "https://www.publicdomainpictures.net/pictures/60000/nahled/labrador-dog.jpg",
+      "breed": "Labrador",
+      "category": "Dog",
+      "adopted_date": "",
+      "identifier": "Brown fur with a black nose"
+    },
+    {
+      "name": "Coco",
+      "age": 1,
+      "price": 100,
+      "image_url": "https://www.publicdomainpictures.net/pictures/70000/nahled/cockatiel-bird.jpg",
+      "breed": "Cockatiel",
+      "category": "Bird",
+      "adopted_date": "",
+      "identifier": "Yellow crest with orange cheeks"
+    },
+    {
+      "name": "Nibbles",
+      "age": 2,
+      "price": 30,
+      "image_url": "https://www.publicdomainpictures.net/pictures/80000/nahled/hamster.jpg",
+      "breed": "Hamster",
+      "category": "Rodent",
+      "adopted_date": "",
+      "identifier": "Brown fur with a white stripe"
+    },
+    {
+      "name": "Shadow",
+      "age": 5,
+      "price": 90,
+      "image_url": "https://www.publicdomainpictures.net/pictures/90000/nahled/black-cat.jpg",
+      "breed": "Black Cat",
+      "category": "Cat",
+      "adopted_date": "",
+      "identifier": "Entirely black fur"
+    },
+    {
+      "name": "Pippin",
+      "age": 3,
+      "price": 70,
+      "image_url": "https://www.publicdomainpictures.net/pictures/100000/nahled/parrot.jpg",
+      "breed": "Parrot",
+      "category": "Bird",
+      "adopted_date": "",
+      "identifier": "Green feathers with a red beak"
+    },
+    {
+      "name": "Bubbles",
+      "age": 1,
+      "price": 20,
+      "image_url": "https://www.publicdomainpictures.net/pictures/110000/nahled/goldfish.jpg",
+      "breed": "Goldfish",
+      "category": "Fish",
+      "adopted_date": "",
+      "identifier": "Golden scales with a long tail"
+    },
+    {
+      "name": "Luna",
+      "age": 2,
+      "price": 120,
+      "image_url": "https://www.publicdomainpictures.net/pictures/120000/nahled/husky-dog.jpg",
+      "breed": "Husky",
+      "category": "Dog",
+      "adopted_date": "",
+      "identifier": "Blue eyes with grey fur"
+    },
+    {
+      "name": "Oliver",
+      "age": 3,
+      "price": 140,
+      "image_url": "https://www.publicdomainpictures.net/pictures/130000/nahled/beagle-dog.jpg",
+      "breed": "Beagle",
+      "category": "Dog",
+      "adopted_date": "",
+      "identifier": "Tri-color coat with floppy ears"
+    },
+    {
+      "name": "Mittens",
+      "age": 2,
+      "price": 75,
+      "image_url": "https://www.publicdomainpictures.net/pictures/140000/nahled/tabby-cat.jpg",
+      "breed": "Tabby",
+      "category": "Cat",
+      "adopted_date": "",
+      "identifier": "Striped fur with white paws"
+    },
+    {
+      "name": "Peanut",
+      "age": 1,
+      "price": 50,
+      "image_url": "https://www.publicdomainpictures.net/pictures/150000/nahled/guinea-pig.jpg",
+      "breed": "Guinea Pig",
+      "category": "Rodent",
+      "adopted_date": "",
+      "identifier": "Brown and white patches"
+    },
+    {
+      "name": "Sunny",
+      "age": 4,
+      "price": 110,
+      "image_url": "https://www.publicdomainpictures.net/pictures/160000/nahled/canary-bird.jpg",
+      "breed": "Canary",
+      "category": "Bird",
+      "adopted_date": "",
+      "identifier": "Bright yellow feathers"
+    },
+    {
+      "name": "Ginger",
+      "age": 3,
+      "price": 95,
+      "image_url": "https://www.publicdomainpictures.net/pictures/170000/nahled/dachshund-dog.jpg",
+      "breed": "Dachshund",
+      "category": "Dog",
+      "adopted_date": "",
+      "identifier": "Long body with short legs"
+    },
+    {
+      "name": "Smokey",
+      "age": 2,
+      "price": 85,
+      "image_url": "https://www.publicdomainpictures.net/pictures/180000/nahled/russian-blue-cat.jpg",
+      "breed": "Russian Blue",
+      "category": "Cat",
+      "adopted_date": "",
+      "identifier": "Grey fur with green eyes"
+    }
+]
+   
+  
