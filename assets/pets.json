@@ -6,10 +6,12 @@
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Golde33443.jpg",
     "breed": "Golden Retriever",
     "category": "Dog",
+    "weight": "4 Kg", 
     "adopted_date": "2024-02-05T14:30:00Z",
     "identifier": "Golden fur with a white patch on chest",
     "contact_at": "+1 555-678-9012",
-    "collect_pet_from": "123 Pet Lane, New York, NY"
+    "collect_pet_from": "123 Pet Lane, New York, NY",
+    "owner_name": "Debdaru Dasgupta"
   },
   {
     "name": "Whiskers",
@@ -18,10 +20,12 @@
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Golde33443.jpg",
     "breed": "Siamese",
     "category": "Cat",
+    "weight": "4 Kg",
     "adopted_date": "",
     "identifier": "Blue eyes with a kinked tail",
     "contact_at": "+1 555-345-6789",
-    "collect_pet_from": "456 Feline Street, Los Angeles, CA"
+    "collect_pet_from": "456 Feline Street, Los Angeles, CA",
+    "owner_name": "Debdaru Dasgupta"
   },
   {
     "name": "Max",
@@ -30,10 +34,12 @@
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Golde33443.jpg",
     "breed": "Labrador",
     "category": "Dog",
+    "weight": "4 Kg",
     "adopted_date": "2024-01-28T09:45:00Z",
     "identifier": "Brown fur with a black nose",
     "contact_at": "+1 555-222-3344",
-    "collect_pet_from": "789 Retriever Road, Chicago, IL"
+    "collect_pet_from": "789 Retriever Road, Chicago, IL",
+    "owner_name": "Debdaru Dasgupta"
   },
   {
     "name": "Coco",
@@ -42,10 +48,12 @@
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Golde33443.jpg",
     "breed": "Cockatiel",
     "category": "Bird",
+    "weight": "4 Kg",
     "adopted_date": "",
     "identifier": "Yellow crest with orange cheeks",
     "contact_at": "+1 555-111-2233",
-    "collect_pet_from": "101 Birdsong Ave, San Francisco, CA"
+    "collect_pet_from": "101 Birdsong Ave, San Francisco, CA",
+    "owner_name": "Debdaru Dasgupta"
   },
   {
     "name": "Luna",
@@ -54,10 +62,12 @@
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Golde33443.jpg",
     "breed": "Husky",
     "category": "Dog",
+    "weight": "4 Kg",
     "adopted_date": "2024-01-15T17:10:00Z",
     "identifier": "Blue eyes with grey fur",
     "contact_at": "+1 555-999-8877",
-    "collect_pet_from": "321 Arctic Way, Denver, CO"
+    "collect_pet_from": "321 Arctic Way, Denver, CO",
+    "owner_name": "Debdaru Dasgupta"
   },
   {
     "name": "Bella",
@@ -66,10 +76,12 @@
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Golde33443.jpg",
     "breed": "Beagle",
     "category": "Dog",
+    "weight": "4 Kg",
     "adopted_date": "",
     "identifier": "Tri-color coat with floppy ears",
     "contact_at": "+1 555-333-4444",
-    "collect_pet_from": "654 Hound Blvd, Houston, TX"
+    "collect_pet_from": "654 Hound Blvd, Houston, TX",
+    "owner_name": "Debdaru Dasgupta"
   },
   {
     "name": "Shadow",
@@ -78,10 +90,12 @@
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Golde33443.jpg",
     "breed": "Bombay",
     "category": "Cat",
+    "weight": "4 Kg",
     "adopted_date": "",
     "identifier": "Jet black fur with yellow eyes",
     "contact_at": "+1 555-777-8888",
-    "collect_pet_from": "987 Midnight Lane, Seattle, WA"
+    "collect_pet_from": "987 Midnight Lane, Seattle, WA",
+    "owner_name": "Debdaru Dasgupta"
   },
   {
     "name": "Oliver",
@@ -90,10 +104,12 @@
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Golde33443.jpg",
     "breed": "African Grey Parrot",
     "category": "Bird",
+    "weight": "4 Kg",
     "adopted_date": "",
     "identifier": "Grey feathers with red tail",
     "contact_at": "+1 555-555-6666",
-    "collect_pet_from": "321 Parrot Place, Miami, FL"
+    "collect_pet_from": "321 Parrot Place, Miami, FL",
+    "owner_name": "Debdaru Dasgupta"
   },
   {
     "name": "Goldie",
@@ -102,10 +118,12 @@
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Golde33443.jpg",
     "breed": "Goldfish",
     "category": "Fish",
+    "weight": "4 Kg",
     "adopted_date": "",
     "identifier": "Bright orange scales",
     "contact_at": "+1 555-888-9999",
-    "collect_pet_from": "123 Aqua St, Orlando, FL"
+    "collect_pet_from": "123 Aqua St, Orlando, FL",
+    "owner_name": "Debdaru Dasgupta"
   },
   {
     "name": "Rocky",
@@ -114,10 +132,12 @@
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Golde33443.jpg",
     "breed": "Bulldog",
     "category": "Dog",
+    "weight": "4 Kg",
     "adopted_date": "",
     "identifier": "Stocky build with wrinkled face",
     "contact_at": "+1 555-444-5555",
-    "collect_pet_from": "456 Bulldog Blvd, Boston, MA"
+    "collect_pet_from": "456 Bulldog Blvd, Boston, MA",
+    "owner_name": "Debdaru Dasgupta"
   },
   {
     "name": "Mittens",
@@ -126,10 +146,12 @@
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Golde33443.jpg",
     "breed": "Tabby",
     "category": "Cat",
+    "weight": "4 Kg",
     "adopted_date": "",
     "identifier": "Striped fur with white paws",
     "contact_at": "+1 555-666-7777",
-    "collect_pet_from": "789 Whisker Way, Portland, OR"
+    "collect_pet_from": "789 Whisker Way, Portland, OR",
+    "owner_name": "Debdaru Dasgupta"
   },
   {
     "name": "Thumper",
@@ -138,10 +160,12 @@
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Golde33443.jpg",
     "breed": "Holland Lop",
     "category": "Rabbit",
+    "weight": "4 Kg",
     "adopted_date": "",
     "identifier": "Floppy ears with tan fur",
     "contact_at": "+1 555-222-3333",
-    "collect_pet_from": "321 Bunny Blvd, Austin, TX"
+    "collect_pet_from": "321 Bunny Blvd, Austin, TX",
+    "owner_name": "Debdaru Dasgupta"
   },
   {
     "name": "Buddy",
@@ -150,10 +174,12 @@
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Golde33443.jpg",
     "breed": "Golden Retriever",
     "category": "Dog",
+    "weight": "4 Kg",
     "adopted_date": "2024-02-05T14:30:00Z",
     "identifier": "Golden fur with a white patch on chest",
     "contact_at": "+1 555-678-9012",
-    "collect_pet_from": "123 Pet Lane, New York, NY"
+    "collect_pet_from": "123 Pet Lane, New York, NY",
+    "owner_name": "Debdaru Dasgupta"
   },
   {
     "name": "Whiskers",
@@ -162,10 +188,12 @@
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Golde33443.jpg",
     "breed": "Siamese",
     "category": "Cat",
+    "weight": "4 Kg",
     "adopted_date": "",
     "identifier": "Blue eyes with a kinked tail",
     "contact_at": "+1 555-345-6789",
-    "collect_pet_from": "456 Feline Street, Los Angeles, CA"
+    "collect_pet_from": "456 Feline Street, Los Angeles, CA",
+    "owner_name": "Debdaru Dasgupta"
   },
   {
     "name": "Max",
@@ -174,10 +202,12 @@
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Golde33443.jpg",
     "breed": "Labrador",
     "category": "Dog",
+    "weight": "4 Kg",
     "adopted_date": "2024-01-28T09:45:00Z",
     "identifier": "Brown fur with a black nose",
     "contact_at": "+1 555-222-3344",
-    "collect_pet_from": "789 Retriever Road, Chicago, IL"
+    "collect_pet_from": "789 Retriever Road, Chicago, IL",
+    "owner_name": "Debdaru Dasgupta"
   },
   {
     "name": "Coco",
@@ -186,10 +216,12 @@
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Golde33443.jpg",
     "breed": "Cockatiel",
     "category": "Bird",
+    "weight": "4 Kg",
     "adopted_date": "",
     "identifier": "Yellow crest with orange cheeks",
     "contact_at": "+1 555-111-2233",
-    "collect_pet_from": "101 Birdsong Ave, San Francisco, CA"
+    "collect_pet_from": "101 Birdsong Ave, San Francisco, CA",
+    "owner_name": "Debdaru Dasgupta"
   },
   {
     "name": "Luna",
@@ -198,10 +230,12 @@
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Golde33443.jpg",
     "breed": "Husky",
     "category": "Dog",
+    "weight": "4 Kg",
     "adopted_date": "2024-01-15T17:10:00Z",
     "identifier": "Blue eyes with grey fur",
     "contact_at": "+1 555-999-8877",
-    "collect_pet_from": "321 Arctic Way, Denver, CO"
+    "collect_pet_from": "321 Arctic Way, Denver, CO",
+    "owner_name": "Debdaru Dasgupta"
   },
   {
     "name": "Bella",
@@ -210,10 +244,12 @@
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Golde33443.jpg",
     "breed": "Beagle",
     "category": "Dog",
+    "weight": "4 Kg",
     "adopted_date": "",
     "identifier": "Tri-color coat with floppy ears",
     "contact_at": "+1 555-333-4444",
-    "collect_pet_from": "654 Hound Blvd, Houston, TX"
+    "collect_pet_from": "654 Hound Blvd, Houston, TX",
+    "owner_name": "Debdaru Dasgupta"
   },
   {
     "name": "Shadow",
@@ -222,10 +258,12 @@
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Golde33443.jpg",
     "breed": "Bombay",
     "category": "Cat",
+    "weight": "4 Kg",
     "adopted_date": "",
     "identifier": "Jet black fur with yellow eyes",
     "contact_at": "+1 555-777-8888",
-    "collect_pet_from": "987 Midnight Lane, Seattle, WA"
+    "collect_pet_from": "987 Midnight Lane, Seattle, WA",
+    "owner_name": "Debdaru Dasgupta"
   },
   {
     "name": "Oliver",
@@ -234,10 +272,12 @@
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Golde33443.jpg",
     "breed": "African Grey Parrot",
     "category": "Bird",
+    "weight": "4 Kg",
     "adopted_date": "",
     "identifier": "Grey feathers with red tail",
     "contact_at": "+1 555-555-6666",
-    "collect_pet_from": "321 Parrot Place, Miami, FL"
+    "collect_pet_from": "321 Parrot Place, Miami, FL",
+    "owner_name": "Debdaru Dasgupta"
   },
   {
     "name": "Goldie",
@@ -246,10 +286,12 @@
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Golde33443.jpg",
     "breed": "Goldfish",
     "category": "Fish",
+    "weight": "4 Kg",
     "adopted_date": "",
     "identifier": "Bright orange scales",
     "contact_at": "+1 555-888-9999",
-    "collect_pet_from": "123 Aqua St, Orlando, FL"
+    "collect_pet_from": "123 Aqua St, Orlando, FL",
+    "owner_name": "Debdaru Dasgupta"
   },
   {
     "name": "Rocky",
@@ -258,9 +300,11 @@
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Golde33443.jpg",
     "breed": "Bulldog",
     "category": "Dog",
+    "weight": "4 Kg",
     "adopted_date": "",
     "identifier": "Stocky build with wrinkled face",
     "contact_at": "+1 555-444-5555",
-    "collect_pet_from": "456 Bulldog Blvd, Boston, MA"
+    "collect_pet_from": "456 Bulldog Blvd, Boston, MA",
+    "owner_name": "Debdaru Dasgupta"
   }
 ]
