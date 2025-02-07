@@ -60,14 +60,46 @@ class _PetDetailPageState extends State<PetDetailPage> {
                         },
                       );
                     },
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(16),
-                      child: Image.network(
-                        widget.pet.imageUrl,
-                        height: 325,
-                        width: double.infinity,
-                        fit: BoxFit.cover,
-                      ),
+                    child: Stack(
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(16),
+                          child: Image.network(
+                            widget.pet.imageUrl,
+                            height: 325,
+                            width: double.infinity,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        Positioned(
+                          bottom: 30,
+                          right: 8,
+                          child: (widget.pet.adoptedDate ?? '').trim().isNotEmpty
+                              ? Container(
+                                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                                  decoration: BoxDecoration(
+                                    color: Colors.green, // Adopted label color
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      const Icon(Icons.check_circle, color: Colors.white, size: 20), // Check icon
+                                      const SizedBox(width: 4),
+                                      const Text(
+                                        "Adopted",
+                                        style: TextStyle(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              : const SizedBox(), 
+                        )
+                      ],
                     ),
                   ),
                   Positioned(
@@ -233,8 +265,8 @@ class _PetDetailPageState extends State<PetDetailPage> {
                       ),
                       padding: const EdgeInsets.symmetric(vertical: 16),
                     ),
-                    child: const Text(
-                      "Adopt Jenny",
+                    child: Text(
+                      "Adopt ${widget.pet.name}",
                       style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
                     ),
                   ),
