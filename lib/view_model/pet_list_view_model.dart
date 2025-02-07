@@ -4,12 +4,18 @@ import '../models/pet_model.dart';
 import '../services/db_services.dart';
 
 class PetsViewModel extends ChangeNotifier {
-
-  Future<List<PetModel>> getPetsAsListOfPetModel() async { 
-    return await DatabaseHelper.instance.getPetsAsListOfPetModel();
+  List<PetModel> _allPets = [];
+  List<PetModel> get allPets => _allPets;
+  setAllPetsValue(List<PetModel> val) {
+    _allPets = val;
+    notifyListeners();
   }
 
-  final List<PetModel> _allPets = [];
+  getPetsAsListOfPetModel() async { 
+    var pets = await DatabaseHelper.instance.getPetsAsListOfPetModel();
+    setAllPetsValue(pets);
+  }
+
   final List<PetModel> _visiblePets = [];
   int _currentPage = 0;
   int _itemsPerPage = 6;
