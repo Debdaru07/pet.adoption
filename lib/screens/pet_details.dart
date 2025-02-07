@@ -7,8 +7,8 @@ import 'package:confetti/confetti.dart';
 
 class PetDetailPage extends StatefulWidget {
   final PetModel pet;
-
-  const PetDetailPage({super.key, required this.pet});
+  final int index;
+  const PetDetailPage({super.key, required this.pet, required this.index});
 
   @override
   State<PetDetailPage> createState() => _PetDetailPageState();
@@ -42,82 +42,85 @@ class _PetDetailPageState extends State<PetDetailPage> {
                 children: [
                   Stack(
                     children: [
-                      GestureDetector(
-                        onTap: () {
-                          showDialog(
-                            context: context,
-                            barrierDismissible: true,
-                            builder: (context) {
-                              return Stack(
-                                children: [
-                                  BackdropFilter(
-                                    filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
-                                    child: Container(
-                                      color: Colors.black.withOpacity(0.2),
+                      Hero(
+                        tag: "hero-tag-${widget.index}",
+                        child: GestureDetector(
+                          onTap: () {
+                            showDialog(
+                              context: context,
+                              barrierDismissible: true,
+                              builder: (context) {
+                                return Stack(
+                                  children: [
+                                    BackdropFilter(
+                                      filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
+                                      child: Container(
+                                        color: Colors.black.withOpacity(0.2),
+                                      ),
                                     ),
-                                  ),
-                                  Center(
-                                    child: Dialog(
-                                      backgroundColor: Colors.transparent,
-                                      insetPadding: EdgeInsets.all(10),
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(16),
-                                        child: InteractiveViewer(
-                                          minScale: 0.6,
-                                          maxScale: 4.0,
-                                          child: Image.network(
-                                            widget.pet.imageUrl,
-                                            fit: BoxFit.contain,
+                                    Center(
+                                      child: Dialog(
+                                        backgroundColor: Colors.transparent,
+                                        insetPadding: EdgeInsets.all(10),
+                                        child: ClipRRect(
+                                          borderRadius: BorderRadius.circular(16),
+                                          child: InteractiveViewer(
+                                            minScale: 0.6,
+                                            maxScale: 4.0,
+                                            child: Image.network(
+                                              widget.pet.imageUrl,
+                                              fit: BoxFit.contain,
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ],
-                              );
-                            },
-                          );
-                        },
-                        child: Stack(
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(16),
-                              child: Image.network(
-                                widget.pet.imageUrl,
-                                height: 325,
-                                width: double.infinity,
-                                fit: BoxFit.cover,
+                                  ],
+                                );
+                              },
+                            );
+                          },
+                          child: Stack(
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(16),
+                                child: Image.network(
+                                  widget.pet.imageUrl,
+                                  height: 325,
+                                  width: double.infinity,
+                                  fit: BoxFit.cover,
+                                ),
                               ),
-                            ),
-                            Positioned(
-                              bottom: 30,
-                              right: 8,
-                              child: (widget.pet.adoptedDate ?? '').trim().isNotEmpty
-                                  ? Container(
-                                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                                      decoration: BoxDecoration(
-                                        color: Colors.green, // Adopted label color
-                                        borderRadius: BorderRadius.circular(8),
-                                      ),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          const Icon(Icons.check_circle, color: Colors.white, size: 20), // Check icon
-                                          const SizedBox(width: 4),
-                                          const Text(
-                                            "Adopted",
-                                            style: TextStyle(
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.white,
+                              Positioned(
+                                bottom: 30,
+                                right: 8,
+                                child: (widget.pet.adoptedDate ?? '').trim().isNotEmpty
+                                    ? Container(
+                                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                                        decoration: BoxDecoration(
+                                          color: Colors.green, // Adopted label color
+                                          borderRadius: BorderRadius.circular(8),
+                                        ),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            const Icon(Icons.check_circle, color: Colors.white, size: 20), // Check icon
+                                            const SizedBox(width: 4),
+                                            const Text(
+                                              "Adopted",
+                                              style: TextStyle(
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.white,
+                                              ),
                                             ),
-                                          ),
-                                        ],
-                                      ),
-                                    )
-                                  : const SizedBox(), 
-                            )
-                          ],
+                                          ],
+                                        ),
+                                      )
+                                    : const SizedBox(), 
+                              )
+                            ],
+                          ),
                         ),
                       ),
                       Positioned(
@@ -138,8 +141,6 @@ class _PetDetailPageState extends State<PetDetailPage> {
                       ),
                     ],
                   ),
-                  
-        
                   // Pet Details Card
                   Transform.translate(
                     offset: const Offset(0, -20),
