@@ -252,22 +252,25 @@ class _PetDetailPageState extends State<PetDetailPage> {
               ),
               const SizedBox(height: 16),
               // Adopt Button
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: () => _showAdoptionConfirmationDialog(context),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.purple,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
+              Visibility(
+                visible: (widget.pet.adoptedDate ?? '').trim().isEmpty,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: () => _showAdoptionConfirmationDialog(context),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.purple,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        padding: const EdgeInsets.symmetric(vertical: 16),
                       ),
-                      padding: const EdgeInsets.symmetric(vertical: 16),
-                    ),
-                    child: Text(
-                      "Adopt ${widget.pet.name}",
-                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
+                      child: Text(
+                        "Adopt ${widget.pet.name}",
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
+                      ),
                     ),
                   ),
                 ),
