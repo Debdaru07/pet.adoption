@@ -429,7 +429,7 @@ class _PetDetailPageState extends State<PetDetailPage> {
                 const SizedBox(width: 8),
                 Expanded(
                   child: Text(
-                    "$petName has been adopted ! 🎉",
+                    "You have adopted $petName 🎉",
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16,
