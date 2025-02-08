@@ -4,14 +4,18 @@ import 'package:mockito/mockito.dart';
 import 'package:pet_adoption/models/pet_model.dart';
 import 'package:pet_adoption/services/db_services.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'database_helper_test.mocks.dart';
 
-// Generate mock classes
 @GenerateMocks([Database])
 void main() {
   late DatabaseHelper databaseHelper;
   late MockDatabase mockDatabase;
-
+  setUpAll(() {
+    sqfliteFfiInit(); // Initialize SQLite FFI
+    databaseFactory = databaseFactoryFfi; // Set database factory for tests
+    databaseFactoryFfi.setDatabasesPath('.'); // Store test databases in the current directory
+  });
   setUp(() {
     databaseHelper = DatabaseHelper.instance;
     mockDatabase = MockDatabase();

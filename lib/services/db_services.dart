@@ -1,9 +1,10 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import '../models/pet_model.dart';
 
 class DatabaseHelper {
@@ -21,6 +22,13 @@ class DatabaseHelper {
 
   Future<Database> _initDB(String fileName) async {
     try {
+      // Use in-memory database for tests
+      if (Platform.environment.containsKey('FLUTTER_TEST')) {
+        return await databaseFactoryFfi.openDatabase(
+          inMemoryDatabasePath,
+          options: OpenDatabaseOptions(version: 1, onCreate: _createDB),
+        );
+      }
       final dbPath = await getDatabasesPath();
       final path = join(dbPath, fileName);
       return await openDatabase(
