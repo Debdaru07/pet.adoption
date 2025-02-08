@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import '../models/pet_model.dart';
 import '../routes/routes.dart';
@@ -31,18 +33,42 @@ class _PetListScreenState extends State<PetListScreen> {
       appBar: AppBar(title: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('Petadopt'),
+          FaIcon(FontAwesomeIcons.paw, color: Colors.purple, size: 18,),
+          const SizedBox(width: 5,),
+          Text(
+            'PetAdopt',
+            style: GoogleFonts.poppins(
+              fontSize: 24,
+              fontWeight: FontWeight.w600,
+              color: Colors.purple,
+            ),
+          ),
           Spacer(),
-          InkWell(
-            onTap: () async {
+          ElevatedButton.icon(
+            onPressed: () async {
               await Navigator.pushNamed(
                 context, 
                 Routes.adoptedPetsTimelineScreen, 
                 arguments: {'data': 'Hello from HomeScreen'}
               );
-
             },
-            child: Icon(Icons.timeline))
+            icon: Icon(Icons.timeline, color: Colors.white),
+            label: Text(
+              'Show Timeline',
+              style: GoogleFonts.poppins(
+                fontSize: 14,
+                fontWeight: FontWeight.w600,
+                color: Colors.white,
+              ),
+            ),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.red,
+              padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+            ),
+          )
         ],
       )),
       body: Consumer<PetsViewModel>(
