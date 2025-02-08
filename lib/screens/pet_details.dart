@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -31,6 +32,7 @@ class _PetDetailPageState extends State<PetDetailPage> {
 
   @override
   Widget build(BuildContext context) {
+
     return Stack(
       children: [
         Scaffold(
@@ -452,5 +454,4 @@ class _PetDetailPageState extends State<PetDetailPage> {
       overlayEntry.remove();
     });
   }
-
 }

@@ -56,6 +56,19 @@ class PetsViewModel extends ChangeNotifier {
     }
   }
 
+  List<PetModel> _adoptedPets = [];
+  List<PetModel> get fetchPets => _adoptedPets;
+
+  setAdoptedPets(List<PetModel> val) {
+    _adoptedPets = val;
+    notifyListeners();
+  }
+
+  callAdoptedPets() async {
+    var pets = await DatabaseHelper.instance.getAdoptedPetsChronologically();
+    setPets(pets);
+  }
+
 
 
 }

@@ -1,7 +1,10 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../models/pet_model.dart';
+import '../routes/routes.dart';
 import '../view_model/pet_list_view_model.dart';
 import 'pet_details.dart';
 
@@ -21,6 +24,7 @@ class _PetListScreenState extends State<PetListScreen> {
     super.initState();
     // _scrollController = ScrollController();
     // _scrollController.addListener(_onScroll);
+    
     final petsVM = Provider.of<PetsViewModel>(context, listen: false);
     Future.delayed(Duration.zero, () async {
       await petsVM.getPetsAsListOfPetModel();
@@ -32,6 +36,8 @@ class _PetListScreenState extends State<PetListScreen> {
     // });
   }
 
+  
+
   void _onScroll() {
     if (_scrollController.position.pixels >=
         _scrollController.position.maxScrollExtent - 100) {
@@ -41,8 +47,25 @@ class _PetListScreenState extends State<PetListScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // interviewQuestion();
     return Scaffold(
-      appBar: AppBar(title: Text('Petadopt')),
+      appBar: AppBar(title: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text('Petadopt'),
+          Spacer(),
+          InkWell(
+            onTap: () async {
+              await Navigator.pushNamed(
+                context, 
+                Routes.adoptedPetsTimelineScreen, 
+                arguments: {'data': 'Hello from HomeScreen'}
+              );
+
+            },
+            child: Icon(Icons.timeline))
+        ],
+      )),
       body: Column(
         children: [
           // Dropdown for Items Per Page
@@ -224,5 +247,4 @@ class _PetListScreenState extends State<PetListScreen> {
       ),
     );
   }
-
 }
