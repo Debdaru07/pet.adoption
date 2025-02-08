@@ -98,11 +98,34 @@ class DatabaseHelper {
       where: "adopted_date IS NOT NULL AND adopted_date != ''",
       orderBy: "adopted_date DESC", // Sorting in chronological order
     );
-    
     return List.generate(maps.length, (i) {
       return PetModel.fromJson(maps[i]);
     });
   }
 
+  Future<bool> updateAdoptionDate(int petId,) async {
+    final db = await database;
+    int response = await db.update(
+      tableName,
+      {"adopted_date": DateTime.now().toUtc().toIso8601String()},
+      where: "id = ?",
+      whereArgs: [petId],
+    );
+    return response == 1;
+  }
+
+  Future<PetModel?> getPetById(int petId) async {
+    final db = await database;
+    final List<Map<String, dynamic>> maps = await db.query(
+      tableName,
+      where: "id = ?",
+      whereArgs: [petId],
+    );
+
+    if (maps.isNotEmpty) {
+      return PetModel.fromJson(maps.first);
+    }
+    return null;
+  }
 
 }

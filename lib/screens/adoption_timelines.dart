@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-import 'package:timeline_list/timeline_list.dart';
 import '../models/pet_model.dart';
 import '../view_model/adoption_timeline_vm.dart';
 import 'package:journey_stepper/journey_stepper.dart';

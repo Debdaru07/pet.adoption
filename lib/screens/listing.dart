@@ -1,8 +1,5 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../models/pet_model.dart';
 import '../routes/routes.dart';
 import '../view_model/pet_list_view_model.dart';
@@ -17,37 +14,19 @@ class PetListScreen extends StatefulWidget {
 
 class _PetListScreenState extends State<PetListScreen> {
 
-  late ScrollController _scrollController;
-
   @override
   void initState() {
     super.initState();
-    // _scrollController = ScrollController();
-    // _scrollController.addListener(_onScroll);
-    
     final petsVM = Provider.of<PetsViewModel>(context, listen: false);
     Future.delayed(Duration.zero, () async {
       await petsVM.getPetsAsListOfPetModel();
       await petsVM.setAllPetsValue(petsVM.allPets);
     });
-    // _fetchPets();
-    // WidgetsBinding.instance.addPostFrameCallback((_) {
-    //   Provider.of<PetsViewModel>(context, listen: false).setPets(petsVM.allPets);
-    // });
-  }
-
-  
-
-  void _onScroll() {
-    if (_scrollController.position.pixels >=
-        _scrollController.position.maxScrollExtent - 100) {
-      Provider.of<PetsViewModel>(context, listen: false).loadMore();
-    }
   }
 
   @override
   Widget build(BuildContext context) {
-    // interviewQuestion();
+
     return Scaffold(
       appBar: AppBar(title: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -102,17 +81,15 @@ class _PetListScreenState extends State<PetListScreen> {
                   mainAxisSpacing: 12,
                   childAspectRatio: 0.75,
                 ),
-                itemCount: petViewModel.allPets.length, //visiblePets.length + 1 , //allPets.length,
+                itemCount: petViewModel.allPets.length,
                 itemBuilder: (context, index) {
-                  // return petCardIndividual(pet);
-                  // if (index < petViewModel.visiblePets.length) {
                   if (index < petViewModel.allPets.length) {
                     final pet = petViewModel.allPets[index];
                     return petCardIndividual(pet, index);
                   } else {
                     return petViewModel.visiblePets.length >= petViewModel.allPets.length
-                        ? const SizedBox()
-                        : const Center(child: CircularProgressIndicator());
+                      ? const SizedBox()
+                      : const Center(child: CircularProgressIndicator());
                   }
                 }
               ),
@@ -147,7 +124,7 @@ class _PetListScreenState extends State<PetListScreen> {
           context,
           PageRouteBuilder(
             transitionDuration: Duration(milliseconds: 500),
-            pageBuilder: (_, __, ___) => PetDetailPage(pet: pet, index: index,),
+            pageBuilder: (_, __, ___) => PetDetailPage(petId: pet.id, index: index,),
           ),
 
         );

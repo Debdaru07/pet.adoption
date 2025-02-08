@@ -1,5 +1,6 @@
 class PetModel {
   final String name;
+  final int id;
   final int age;
   final double price;
   final String imageUrl;
@@ -12,6 +13,7 @@ class PetModel {
 
   PetModel({
     required this.name,
+    required this.id,
     required this.age,
     required this.price,
     required this.imageUrl,
@@ -24,6 +26,7 @@ class PetModel {
   });
 
   factory PetModel.fromJson(Map<String, dynamic> json) => PetModel(
+    id: json['id'],
     name: json['name'],
     age: json['age'],
     price: (json['price'] as num).toDouble(), // Handle potential int/double
@@ -38,6 +41,7 @@ class PetModel {
 
 
   Map<String, dynamic> toJson() => {
+    'id': id,
     'name': name,
     'age': age,
     'price': price,

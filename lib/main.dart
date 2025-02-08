@@ -5,6 +5,7 @@ import 'services/db_services.dart';
 import 'package:provider/provider.dart';
 
 import 'view_model/adoption_timeline_vm.dart';
+import 'view_model/pet_details_vm.dart';
 import 'view_model/pet_list_view_model.dart';
 
 void main() async {
@@ -14,6 +15,7 @@ void main() async {
     providers: [
       ChangeNotifierProvider(create: (context) => PetsViewModel()),
       ChangeNotifierProvider(create: (context) => AdoptionTimelineVm()),
+      ChangeNotifierProvider(create: (context) => PetDetailsVm()),
     ],
     child: const MyApp()));
 }
