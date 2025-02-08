@@ -25,8 +25,7 @@ Welcome to the **Pet Adoption App**! This Flutter-based mobile application helps
 - 🐕 Browse a variety of pets available for adoption.
 - 📌 View detailed information about each pet.
 - ❤️ Mark pets as adopted.
-- 🔍 Search and filter pets by breed, age, and category.
-- 🏠 Save favorite pets for later.
+- 🔍 Search pets by breed, age, and category.
 
 ## 🛠️ Tech Stack
 
