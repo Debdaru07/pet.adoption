@@ -47,30 +47,6 @@ class _PetListScreenState extends State<PetListScreen> {
       )),
       body: Column(
         children: [
-          // Dropdown for Items Per Page
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                const Text("Items per page: "),
-                DropdownButton<int>(
-                  value: Provider.of<PetsViewModel>(context).itemsPerPage,
-                  items: [6, 10, 15].map((int value) {
-                    return DropdownMenuItem<int>(
-                      value: value,
-                      child: Text(value.toString()),
-                    );
-                  }).toList(),
-                  onChanged: (value) {
-                    if (value != null) {
-                      Provider.of<PetsViewModel>(context, listen: false)
-                          .setItemsPerPage(value);
-                    }
-                  },
-                ),
-              ],
-            ),
-          ),
           Expanded(
             child: Consumer<PetsViewModel>(
               builder: (context, petViewModel, child) => GridView.builder(
@@ -87,7 +63,7 @@ class _PetListScreenState extends State<PetListScreen> {
                     final pet = petViewModel.allPets[index];
                     return petCardIndividual(pet, index);
                   } else {
-                    return petViewModel.visiblePets.length >= petViewModel.allPets.length
+                    return petViewModel.allPets.length >= petViewModel.allPets.length
                       ? const SizedBox()
                       : const Center(child: CircularProgressIndicator());
                   }

@@ -21,20 +21,22 @@ class PetDetailPage extends StatefulWidget {
 
 class _PetDetailPageState extends State<PetDetailPage> {
   ConfettiController? _confettiController;
+  late PetDetailsVm petDetailsVm;
 
   @override
   void initState() {
     super.initState();
-    final viewModel = Provider.of<PetDetailsVm>(context, listen: false);
+    petDetailsVm = Provider.of<PetDetailsVm>(context, listen: false);
     _confettiController = ConfettiController(duration: Duration(seconds: 3));
     Future.delayed(Duration.zero, () async {
-      await viewModel.callIndividualPet(widget.petId);
+      await petDetailsVm.callIndividualPet(widget.petId);
     });
   }
 
   @override
   void dispose() {
     _confettiController?.dispose();
+    Future.microtask(() => petDetailsVm.setPetDetailsModel(null));
     super.dispose();
   }
 
