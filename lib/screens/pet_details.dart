@@ -48,7 +48,9 @@ class _PetDetailPageState extends State<PetDetailPage> {
           body: SafeArea(
             child: SingleChildScrollView(
               child: Consumer<PetDetailsVm>(
-                builder: (c, viewModel, _) => Column(
+                builder: (c, viewModel, _) => 
+                viewModel.model == null ? CircularProgressIndicator()
+              : Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Stack(
@@ -95,7 +97,8 @@ class _PetDetailPageState extends State<PetDetailPage> {
                               children: [
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(16),
-                                  child: Image.network(
+                                  child: 
+                                  Image.network(
                                     viewModel.model?.imageUrl ?? '',
                                     height: 325,
                                     width: double.infinity,
@@ -389,9 +392,11 @@ class _PetDetailPageState extends State<PetDetailPage> {
                   _confettiController?.play(); 
                   showAdoptionToast(context, viewModel.model?.name ?? '');
                   final petsVM = Provider.of<PetsViewModel>(context, listen: false);
+                  final detailsPageVM = Provider.of<PetDetailsVm>(context, listen: false);
                   Future.delayed(Duration.zero, () async {
                     await petsVM.getPetsAsListOfPetModel();
                     await petsVM.setAllPetsValue(petsVM.allPets);
+                    await detailsPageVM.callIndividualPet(viewModel.model?.id ?? 0);
                   });
                 } else {
                   showAdoptionToast(context, viewModel.model?.name ?? '', errorText: 'Couldnt update the Adoption Status :(');
@@ -470,8 +475,6 @@ class _PetDetailPageState extends State<PetDetailPage> {
     );
 
     overlay.insert(overlayEntry);
-
-    // Auto remove after 1.5 seconds
     Future.delayed(const Duration(milliseconds: 1500), () {
       overlayEntry.remove();
     });
