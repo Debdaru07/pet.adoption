@@ -4,33 +4,19 @@ Welcome to the **Pet Adoption App**! This Flutter-based mobile application helps
 
 ## 📸 Screenshots
 
-<!-- ### Pet Listing Screen
-![Pet Listing](assets/screenshots/list.png)
-
-### Adoption Timeline Screen
-![Adoption Timeline](assets/screenshots/adoption_timeline.png)
-
-### Pet Details Screen
-![Pet Details](assets/screenshots/pet_details.png)
-
-### Success Toast Confetti Screen
-![Success Toast Confetti](assets/screenshots/confetti_toast.png)
-
-### Confirm Adoption Screen
-![Confirm Adoption](assets/screenshots/confirm_adoption.png) -->
 ### Pet Listing, Adoption Timeline & Pet Details
 
-<p align="center">
-  <img src="assets/screenshots/list.png" width="30%" />
-  <img src="assets/screenshots/adoption_timeline.png" width="30%" />
-  <img src="assets/screenshots/pet_details.png" width="30%" />
+<p align="center" style="margin: 20px 0; padding: 10px;">
+  <img src="assets/screenshots/list.png" width="30%" style="margin: 10px; height: 75%;" />
+  <img src="assets/screenshots/adoption_timeline.png" width="30%" style="margin: 10px; height: 75%;" />
+  <img src="assets/screenshots/pet_details.png" width="30%" style="margin: 10px; height: 75%;" />
 </p>
 
 ### Success Toast Confetti & Confirm Adoption
 
-<p align="center">
-  <img src="assets/screenshots/confetti_toast.png" width="45%" />
-  <img src="assets/screenshots/confirm_adoption.png" width="45%" />
+<p align="center" style="margin: 20px 0; padding: 10px;">
+  <img src="assets/screenshots/confetti_toast.png" width="45%" style="margin: 10px; height: 75%;" />
+  <img src="assets/screenshots/confirm_adoption.png" width="45%" style="margin: 10px; height: 75%;" />
 </p>
 
 
