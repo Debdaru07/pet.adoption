@@ -79,5 +79,6 @@ This project is licensed under the **MIT License**. Feel free to modify and use 
 ---
 
 👨‍💻 **Developed by Debdaru Dasgupta**\
-🌎 [Your Portfolio or GitHub](https://github.com/Debdaru07)
+🌎 [GitHub](https://github.com/Debdaru07)
+🌎 [Portfolio](https://debs-portfolio-1099.netlify.app/#)
 
