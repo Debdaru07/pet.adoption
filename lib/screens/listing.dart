@@ -45,11 +45,33 @@ class _PetListScreenState extends State<PetListScreen> {
             child: Icon(Icons.timeline))
         ],
       )),
-      body: Column(
-        children: [
-          Expanded(
-            child: Consumer<PetsViewModel>(
-              builder: (context, petViewModel, child) => GridView.builder(
+      body: Consumer<PetsViewModel>(
+          builder: (context, petViewModel, child) => Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: TextField(
+                controller: petViewModel.searchController,
+                decoration: InputDecoration(
+                  labelText: "Search Pets",
+                  border: OutlineInputBorder(),
+                  prefixIcon: Icon(Icons.search),
+                ),
+                onChanged: (value) {
+                  if(value.trim().isEmpty) {
+                    final petsVM = Provider.of<PetsViewModel>(context, listen: false);
+                    Future.delayed(Duration.zero, () async {
+                      await petsVM.getPetsAsListOfPetModel();
+                      await petsVM.setAllPetsValue(petsVM.allPets);
+                    });
+                  } else {
+                    petViewModel.debounceSearchDBService(value);
+                  }
+                },
+              ),
+            ),
+            Expanded(
+              child: GridView.builder(
                 padding: const EdgeInsets.all(16),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
@@ -70,8 +92,8 @@ class _PetListScreenState extends State<PetListScreen> {
                 }
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       )
     );
   }
