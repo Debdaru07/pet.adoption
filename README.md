@@ -80,10 +80,6 @@ Execute unit tests with:
 flutter test
 ```
 
-## 📜 License
-
-This project is licensed under the **MIT License**. Feel free to modify and use it as needed.
-
 ---
 
 👨‍💻 **Developed by Debdaru Dasgupta**\
