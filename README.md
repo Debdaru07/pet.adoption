@@ -7,16 +7,16 @@ Welcome to the **Pet Adoption App**! This Flutter-based mobile application helps
 ### Pet Listing, Adoption Timeline & Pet Details
 
 <p align="center" style="margin: 20px 0; padding: 10px;">
-  <img src="assets/screenshots/list.png" width="30%" style="margin: 10px; height: 75%;" />
-  <img src="assets/screenshots/adoption_timeline.png" width="30%" style="margin: 10px; height: 75%;" />
-  <img src="assets/screenshots/pet_details.png" width="30%" style="margin: 10px; height: 75%;" />
+  <img src="assets/screenshots/list.png" width="30%" style="margin: 10px 15px; height: 75%;" />
+  <img src="assets/screenshots/adoption_timeline.png" width="30%" style="margin: 10px 15px; height: 75%;" />
+  <img src="assets/screenshots/pet_details.png" width="30%" style="margin: 10px 15px; height: 75%;" />
 </p>
 
 ### Success Toast Confetti & Confirm Adoption
 
 <p align="center" style="margin: 20px 0; padding: 10px;">
-  <img src="assets/screenshots/confetti_toast.png" width="45%" style="margin: 10px; height: 75%;" />
-  <img src="assets/screenshots/confirm_adoption.png" width="45%" style="margin: 10px; height: 75%;" />
+  <img src="assets/screenshots/confetti_toast.png" width="45%" style="margin: 10px 15px; height: 75%;" />
+  <img src="assets/screenshots/confirm_adoption.png" width="45%" style="margin: 10px 15px; height: 75%;" />
 </p>
 
 
