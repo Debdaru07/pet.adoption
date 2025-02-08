@@ -4,10 +4,20 @@ Welcome to the **Pet Adoption App**! This Flutter-based mobile application helps
 
 ## 📸 Screenshots
 
-### Home Screen
+### Pet Listing Screen
+![Pet Listing](assets/screenshots/list.png)
+
+### Adoption Timeline Screen
+![Adoption Timeline](assets/screenshots/adoption_timeline.png)
 
 ### Pet Details Screen
+![Pet Details](assets/screenshots/pet_details.png)
 
+### Success Toast Confetti Screen
+![Success Toast Confetti](assets/screenshots/confetti_toast.png)
+
+### Confirm Adoption Screen
+![Confirm Adoption](assets/screenshots/confirm_adoption.png)
 
 
 ## 🚀 Features
