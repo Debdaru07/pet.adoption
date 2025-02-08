@@ -4,7 +4,7 @@ Welcome to the **Pet Adoption App**! This Flutter-based mobile application helps
 
 ## 📸 Screenshots
 
-### Pet Listing Screen
+<!-- ### Pet Listing Screen
 ![Pet Listing](assets/screenshots/list.png)
 
 ### Adoption Timeline Screen
@@ -17,7 +17,21 @@ Welcome to the **Pet Adoption App**! This Flutter-based mobile application helps
 ![Success Toast Confetti](assets/screenshots/confetti_toast.png)
 
 ### Confirm Adoption Screen
-![Confirm Adoption](assets/screenshots/confirm_adoption.png)
+![Confirm Adoption](assets/screenshots/confirm_adoption.png) -->
+### Pet Listing, Adoption Timeline & Pet Details
+
+<p align="center">
+  <img src="assets/screenshots/list.png" width="30%" />
+  <img src="assets/screenshots/adoption_timeline.png" width="30%" />
+  <img src="assets/screenshots/pet_details.png" width="30%" />
+</p>
+
+### Success Toast Confetti & Confirm Adoption
+
+<p align="center">
+  <img src="assets/screenshots/confetti_toast.png" width="45%" />
+  <img src="assets/screenshots/confirm_adoption.png" width="45%" />
+</p>
 
 
 ## 🚀 Features
