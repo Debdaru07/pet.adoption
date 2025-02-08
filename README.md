@@ -23,7 +23,6 @@ Welcome to the **Pet Adoption App**! This Flutter-based mobile application helps
 - **Flutter** - Frontend framework
 - **Sqflite** - Local database for storing pets
 - **Dart** - Programming language
-- **Firebase** - For backend storage (if applicable)
 
 ## 📂 Folder Structure
 
